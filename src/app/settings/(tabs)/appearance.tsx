@@ -60,12 +60,6 @@ export default function Appearance() {
                 onPress={() => settheme("system")}
               />
               <RadioButton.Item
-                label="Dynamic"
-                value="dynamic"
-                status={theme === "dynamic" ? "checked" : "unchecked"}
-                onPress={() => settheme("dynamic")}
-              />
-              <RadioButton.Item
                 label="Pure Black"
                 value="pureBlack"
                 status={theme === "pureBlack" ? "checked" : "unchecked"}

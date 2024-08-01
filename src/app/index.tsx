@@ -1,6 +1,7 @@
+import { router } from "expo-router";
 import React from "react";
 import { View } from "react-native";
-import { Text, useTheme } from "react-native-paper";
+import { IconButton, Text, useTheme } from "react-native-paper";
 
 export default function index() {
   const theme = useTheme();
@@ -11,6 +12,7 @@ export default function index() {
       style={{ backgroundColor: theme.colors.surface }}
     >
       <Text className="text-center font-bold text-2xl">Namaste World!</Text>
+      <IconButton icon="settings" onPress={() => router.navigate("settings")} />
     </View>
   );
 }

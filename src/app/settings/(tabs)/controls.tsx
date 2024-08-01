@@ -1,4 +1,4 @@
-import { RootState } from "@/app/store";
+import { RootState } from "@/features/store";
 import ScrollView from "@/components/ScrollView";
 import React, { useEffect, useState } from "react";
 import { List, Switch } from "react-native-paper";
@@ -10,9 +10,7 @@ export default function Controls() {
   const dispatch = useDispatch();
   const { controls } = useSelector((state: RootState) => state.settings);
 
-  const [resumePlayback, setresumePlayback] = useState<boolean>(
-    controls.player.resumePlayback,
-  );
+  const [resumePlayback, setresumePlayback] = useState<boolean>(false);
   const toggleResumePlayback = () => setresumePlayback((prev) => !prev);
 
   useEffect(() => {
