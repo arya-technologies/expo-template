@@ -1,7 +1,4 @@
-import {
-  Material3ThemeProvider,
-  useAppTheme,
-} from "@/components/providers/Material3ThemeProvider";
+import { Material3ThemeProvider } from "@/components/providers/Material3ThemeProvider";
 import { persistor, store } from "@/features/store";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import * as NavigationBar from "expo-navigation-bar";
@@ -16,7 +13,6 @@ export default function Layout() {
     NavigationBar.setPositionAsync("absolute");
     NavigationBar.setBackgroundColorAsync("#00000000");
   }, []);
-  const theme = useAppTheme();
 
   return (
     <Provider store={store}>
@@ -29,7 +25,7 @@ export default function Layout() {
           <Stack
             screenOptions={{
               animation: "default",
-              headerShown: true,
+              headerShown: false,
             }}
             initialRouteName="/"
           />

@@ -7,6 +7,7 @@ import {
 import { createContext, useContext, useEffect } from "react";
 import { useColorScheme } from "react-native";
 import {
+  adaptNavigationTheme,
   MD3DarkTheme,
   MD3LightTheme,
   MD3Theme,
