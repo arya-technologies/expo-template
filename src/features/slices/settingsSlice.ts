@@ -1,7 +1,7 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
-export type ThemeProps = "system" | "pureBlack";
+export type ThemeProps = "system" | "light" | "dark" | "pureBlack";
 
 export type AppearanceProps = {
   colors: {
@@ -30,7 +30,7 @@ export interface SettingsProps {
 const initialState: SettingsProps = {
   appearance: {
     colors: {
-      theme: "dynamic",
+      theme: "system",
     },
     typography: {
       useSystemFont: false,

@@ -5,7 +5,7 @@ import {
   useMaterial3Theme,
 } from "@pchmn/expo-material3-theme";
 import { createContext, useContext, useEffect } from "react";
-import { useColorScheme } from "react-native";
+import { useColorScheme, Appearance } from "react-native";
 import {
   adaptNavigationTheme,
   MD3DarkTheme,
@@ -57,8 +57,14 @@ export function Material3ThemeProvider({
 
   useEffect(() => {
     if (themeMode === "system") {
+      Appearance.setColorScheme(null);
       resetTheme();
+    } else if (themeMode === "light") {
+      Appearance.setColorScheme("light");
+    } else if (themeMode === "dark") {
+      Appearance.setColorScheme("dark");
     } else if (themeMode === "pureBlack") {
+      Appearance.setColorScheme("dark");
       resetTheme();
     }
   }, [themeMode]);
