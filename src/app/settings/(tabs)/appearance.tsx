@@ -53,30 +53,15 @@ export default function Appearance() {
           <Dialog visible={isThemeDialogVisible} onDismiss={hideThemeDialog}>
             <Dialog.Title>Theme</Dialog.Title>
             <Dialog.Content>
-              <RadioButton.Item
-                label="System"
-                value="system"
-                status={theme === "system" ? "checked" : "unchecked"}
-                onPress={() => settheme("system")}
-              />
-              <RadioButton.Item
-                label="Light"
-                value="light"
-                status={theme === "light" ? "checked" : "unchecked"}
-                onPress={() => settheme("light")}
-              />
-              <RadioButton.Item
-                label="Dark"
-                value="dark"
-                status={theme === "dark" ? "checked" : "unchecked"}
-                onPress={() => settheme("dark")}
-              />
-              <RadioButton.Item
-                label="Pure Black"
-                value="pureBlack"
-                status={theme === "pureBlack" ? "checked" : "unchecked"}
-                onPress={() => settheme("pureBlack")}
-              />
+              <RadioButton.Group
+                value={theme}
+                onValueChange={(value: ThemeProps) => settheme(value)}
+              >
+                <RadioButton.Item label="System" value="system" />
+                <RadioButton.Item label="Light" value="light" />
+                <RadioButton.Item label="Dark" value="dark" />
+                <RadioButton.Item label="Pure Black" value="pureBlack" />
+              </RadioButton.Group>
             </Dialog.Content>
             <Dialog.Actions>
               <Button onPress={hideThemeDialog}>Cancel</Button>
