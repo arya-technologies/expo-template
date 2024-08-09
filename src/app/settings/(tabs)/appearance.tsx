@@ -20,11 +20,12 @@ export default function Appearance() {
   const [isThemeDialogVisible, setisThemeDialogVisible] = useState(false);
   const showThemeDialog = () => setisThemeDialogVisible(true);
   const hideThemeDialog = () => setisThemeDialogVisible(false);
-
-  const [isUsingSystemFont, setisUsingSystemFont] = useState<boolean>(
-    appearance.typography.useSystemFont,
-  );
-  const toggleIsSystemFontEnabled = () => setisUsingSystemFont((prev) => !prev);
+  const [themes, setthemes] = useState<ThemeProps[]>([
+    "dark",
+    "light",
+    "system",
+    "pureBlack",
+  ]);
 
   useEffect(() => {
     dispatch(
@@ -32,56 +33,44 @@ export default function Appearance() {
         colors: {
           theme,
         },
-        typography: {
-          useSystemFont: isUsingSystemFont,
-        },
       }),
     );
-  }, [theme, isUsingSystemFont]);
+  }, [theme]);
 
   return (
-    <ScrollView>
-      <List.Section>
-        <List.Subheader>COLORS</List.Subheader>
-        <List.Item
-          title="Theme"
-          description={theme.slice(0, 1).toUpperCase() + theme.slice(1)}
-          onPress={showThemeDialog}
-        />
-
-        <Portal>
-          <Dialog visible={isThemeDialogVisible} onDismiss={hideThemeDialog}>
-            <Dialog.Title>Theme</Dialog.Title>
-            <Dialog.Content>
-              <RadioButton.Group
-                value={theme}
-                onValueChange={(value: ThemeProps) => settheme(value)}
-              >
-                <RadioButton.Item label="System" value="system" />
-                <RadioButton.Item label="Light" value="light" />
-                <RadioButton.Item label="Dark" value="dark" />
-                <RadioButton.Item label="Pure Black" value="pureBlack" />
-              </RadioButton.Group>
-            </Dialog.Content>
-            <Dialog.Actions>
-              <Button onPress={hideThemeDialog}>Cancel</Button>
-            </Dialog.Actions>
-          </Dialog>
-        </Portal>
-      </List.Section>
-
-      <List.Section>
-        <List.Subheader>TYPOGRAPHY</List.Subheader>
-        <List.Item
-          title="Use System Font"
-          right={() => (
-            <Switch
-              value={isUsingSystemFont}
-              onChange={toggleIsSystemFontEnabled}
-            />
-          )}
-        />
-      </List.Section>
-    </ScrollView>
+    <>
+      <ScrollView>
+        <List.Section>
+          <List.Subheader>COLORS</List.Subheader>
+          <List.Item
+            title="Theme"
+            description={theme.slice(0, 1).toUpperCase() + theme.slice(1)}
+            onPress={showThemeDialog}
+          />
+        </List.Section>
+      </ScrollView>
+      <Portal>
+        <Dialog visible={isThemeDialogVisible} onDismiss={hideThemeDialog}>
+          <Dialog.Title>Theme</Dialog.Title>
+          <Dialog.Content>
+            <RadioButton.Group
+              value={theme}
+              onValueChange={(value: ThemeProps) => settheme(value)}
+            >
+              {themes.map((item) => (
+                <RadioButton.Item
+                  key={item}
+                  value={item}
+                  label={item.slice(0, 1).toUpperCase() + item.slice(1)}
+                />
+              ))}
+            </RadioButton.Group>
+          </Dialog.Content>
+          <Dialog.Actions>
+            <Button onPress={hideThemeDialog}>Cancel</Button>
+          </Dialog.Actions>
+        </Dialog>
+      </Portal>
+    </>
   );
 }

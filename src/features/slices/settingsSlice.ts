@@ -7,9 +7,6 @@ export type AppearanceProps = {
   colors: {
     theme: ThemeProps;
   };
-  typography: {
-    useSystemFont: boolean;
-  };
 };
 export type ControlsProps = {};
 export type StorageProps = {};
@@ -32,9 +29,6 @@ const initialState: SettingsProps = {
     colors: {
       theme: "system",
     },
-    typography: {
-      useSystemFont: false,
-    },
   },
   controls: {},
   storage: {},
@@ -55,7 +49,6 @@ export const settingsSlice = createSlice({
       { payload }: PayloadAction<AppearanceProps>,
     ) => {
       appearance.colors.theme = payload.colors.theme;
-      appearance.typography.useSystemFont = payload.typography.useSystemFont;
     },
     setcontrols: (
       { controls },
