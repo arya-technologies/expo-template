@@ -1,5 +1,4 @@
 on: workflow_dispatch
-branches: dev
 jobs:
   build:
     runs-on: ubuntu-latest
