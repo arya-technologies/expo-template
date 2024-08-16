@@ -14,10 +14,10 @@ export default function AboutAppDialog({
   onDismiss,
 }: AboutAppDialogProos) {
   const handleSource = () => {
-    Linking.openURL("https://github.com/arya-technologies/astro-cam");
+    Linking.openURL("https://github.com/not-scripter/expo-template");
   };
   const handleIssue = () => {
-    Linking.openURL("https://github.com/arya-technologies/astro-cam/issues");
+    Linking.openURL("https://github.com/not-scripter/expo-template/issues");
   };
 
   return (
