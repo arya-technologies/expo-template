@@ -1,43 +1,48 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
-export type ThemeProps = "system" | "light" | "dark" | "pureBlack";
-
-export type AppearanceProps = {
-  colors: {
-    theme: ThemeProps;
-  };
-};
-export type ControlsProps = {};
-export type StorageProps = {};
-export type OthersProps = {
-  battery: {
-    optimizationDisabled: boolean;
-  };
+export type ThemesProps = "system" | "light" | "dark" | "pureBlack";
+export type ThemeProps = {
+  label: string;
+  value: string;
+  icon: string;
 };
 
-export interface SettingsProps {
+export const themes: ThemeProps[] = [
+  {
+    label: "System",
+    value: "system",
+    icon: "color-wand",
+  },
+  {
+    label: "Light",
+    value: "light",
+    icon: "sunny",
+  },
+  {
+    label: "Dark",
+    value: "dark",
+    icon: "cloudy-night",
+  },
+  {
+    label: "Pure Black",
+    value: "pureBlack",
+    icon: "moon",
+  },
+];
+
+interface AppearanceProps {
+  theme: ThemeProps;
+}
+
+interface SettingsProps {
   appearance: AppearanceProps;
-  controls: ControlsProps;
-  storage: StorageProps;
-  others: OthersProps;
-  info: {};
 }
 
 const initialState: SettingsProps = {
   appearance: {
-    colors: {
-      theme: "system",
-    },
+    theme: themes[0],
   },
-  controls: {},
-  storage: {},
-  others: {
-    battery: {
-      optimizationDisabled: false,
-    },
-  },
-  info: {},
 };
 
 export const settingsSlice = createSlice({
@@ -48,26 +53,11 @@ export const settingsSlice = createSlice({
       { appearance },
       { payload }: PayloadAction<AppearanceProps>,
     ) => {
-      appearance.colors.theme = payload.colors.theme;
-    },
-    setcontrols: (
-      { controls },
-      { payload }: PayloadAction<ControlsProps>,
-    ) => {},
-    setstorage: ({ storage }, { payload }: PayloadAction<StorageProps>) => {
-      storage = {};
-    },
-    setothers: ({ others }, { payload }: PayloadAction<OthersProps>) => {
-      others = {
-        battery: {
-          optimizationDisabled: payload.battery.optimizationDisabled,
-        },
-      };
+      appearance.theme = payload.theme;
     },
   },
 });
 
-export const { setappearance, setcontrols, setstorage, setothers } =
-  settingsSlice.actions;
+export const { setappearance } = settingsSlice.actions;
 
 export default settingsSlice.reducer;
