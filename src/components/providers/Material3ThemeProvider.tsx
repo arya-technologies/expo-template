@@ -33,7 +33,7 @@ export function Material3ThemeProvider({
   const colorScheme = useColorScheme();
 
   const themeMode = useSelector(
-    (state: RootState) => state.settings.appearance.colors.theme,
+    (state: RootState) => state.settings.appearance.theme,
   );
 
   const { theme, updateTheme, resetTheme } = useMaterial3Theme();
@@ -56,14 +56,14 @@ export function Material3ThemeProvider({
   };
 
   useEffect(() => {
-    if (themeMode === "system") {
+    if (themeMode.value === "system") {
       Appearance.setColorScheme(null);
       resetTheme();
-    } else if (themeMode === "light") {
+    } else if (themeMode.value === "light") {
       Appearance.setColorScheme("light");
-    } else if (themeMode === "dark") {
+    } else if (themeMode.value === "dark") {
       Appearance.setColorScheme("dark");
-    } else if (themeMode === "pureBlack") {
+    } else if (themeMode.value === "pureBlack") {
       Appearance.setColorScheme("dark");
       resetTheme();
     }
@@ -73,7 +73,8 @@ export function Material3ThemeProvider({
     colorScheme === "dark"
       ? {
           ...MD3DarkTheme,
-          colors: themeMode === "pureBlack" ? pureBlackThemeColors : theme.dark,
+          colors:
+            themeMode.value === "pureBlack" ? pureBlackThemeColors : theme.dark,
         }
       : { ...MD3LightTheme, colors: theme.light };
 
