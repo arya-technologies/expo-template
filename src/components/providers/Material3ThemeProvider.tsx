@@ -5,9 +5,8 @@ import {
   useMaterial3Theme,
 } from "@pchmn/expo-material3-theme";
 import { createContext, useContext, useEffect } from "react";
-import { useColorScheme, Appearance } from "react-native";
+import { Appearance, useColorScheme } from "react-native";
 import {
-  adaptNavigationTheme,
   MD3DarkTheme,
   MD3LightTheme,
   MD3Theme,
@@ -52,7 +51,6 @@ export function Material3ThemeProvider({
       level5: "#212121",
     },
     backdrop: "#000000CC",
-    // onSurfaceVariant: "#f00",
   };
 
   useEffect(() => {
