@@ -1,5 +1,5 @@
 {
-  "name": "@notscripter/expo-template",
+  "name": "@arya-technologies/expo-template",
   "version": "1.0.10",
   "main": "expo-router/entry",
   "scripts": {
