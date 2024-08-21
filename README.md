@@ -3,7 +3,7 @@
 # Installation
 
 ```bash
-npx create-expo-app@latest --template @notscripter/expo-template
+npx create-expo-app@latest --template @arya-technologies/expo-template
 ```
 
 ## if getting error related to css run this in that project directory
