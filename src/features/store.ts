@@ -1,6 +1,5 @@
 import settingsSlice from "@/features/slices/settingsSlice";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import ExpoFileSystemStorage from "redux-persist-expo-filesystem";
 import {
   FLUSH,
   PAUSE,
@@ -11,10 +10,11 @@ import {
   REGISTER,
   REHYDRATE,
 } from "redux-persist";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const settingsConfig = {
   key: "settings",
-  storage: ExpoFileSystemStorage,
+  storage: AsyncStorage,
 };
 
 const rootReducer = combineReducers({
